@@ -1,0 +1,115 @@
+.sidebar {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: $sidebar-height;
+	width: $sidebar-width;
+	background-color: $sidebar-bg-color;
+	position: fixed;
+
+	@include e(intro) {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		flex-direction: column;
+		background: transparent;
+
+		@include e(image) {
+			align-self: center;
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+		}
+
+		@include e(name) {
+			margin-top: 16px;
+			background-color: transparent;
+			font-size: 2rem;
+			font-family: 'Permanent Marker', cursive;
+			color: #000;
+
+			&::after {
+				content: " ";
+				display: block;
+				width: 110px;
+				height: 2px;
+				background-color: #000;
+				margin-bottom: 8px;
+			}
+		}
+
+		&__designation,
+		&__location {
+			background-color: transparent;
+			font-size: .85rem;
+			font-family: "Roboto Mono", monospace;
+			color: #333;
+		}
+
+		&__email-address {
+			margin-top: 16px;
+			left: 20px;
+		}
+
+		&__contact {
+			margin-top: 10px;
+			transform: rotate(3deg);
+		}
+
+		&__email-address,
+		&__contact {
+			background: #fafafa;
+			padding: 8px 10px;
+			border-radius: 3px;
+			font-family: "Roboto Mono", monospace;
+			font-size: .75rem;
+			box-shadow: 0 2px 2px rgba(0, 0, 0, .16);
+			cursor: pointer;
+			color: #000;
+			text-align: center;
+			position: relative;
+		}
+	}
+
+	@include e(footer) {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		position: fixed;
+		justify-content: space-around;
+		bottom: 0;
+		left: 0;
+		width: $sidebar-width;
+		background-color: $sidebar-bg-color;
+		box-shadow: 0 0 4px rgba(0, 0, 0, .16);
+
+		@include e(item) {
+
+			@include e(link) {
+				background-color: $sidebar-bg-color;
+				text-align: center;
+				display: block;
+				padding: 10px 15px;
+
+				& i.fa {
+					color: #666;
+					font-size: 1.2rem;
+					background-color: transparent;
+				}
+
+				&:hover > i.fa {
+					color: #333;
+				}
+			}
+		}
+	}
+}
