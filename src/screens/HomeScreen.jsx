@@ -1,5 +1,7 @@
 import React from 'react';
 import SocialLink from './../components/home/SocialLink';
+import Recommendation from "./../components/home/Recommendation";
+import recommendations from "./../constants/home/recommendations";
 
 export default () => {
 	return (
@@ -42,8 +44,21 @@ export default () => {
 			</div>
 
 			<main className="content">
-				<div className="fullwidth hight-screenfit flex justify-center align-items-center">
-
+				<div className="fullwidth minhight-screenfit flex text-center">
+					<div id="home-page-wrapper">
+						<div className="recommendations flex flex-column align-items-center">
+							{
+								recommendations.map(recommendation => (
+									<Recommendation
+										author={recommendation.author.name}
+										headline={recommendation.author.headline}
+										address={recommendation.author.address}
+										content={recommendation.content}
+									/>
+								))
+							}
+						</div>
+					</div>
 				</div>
 			</main>
 		</div>

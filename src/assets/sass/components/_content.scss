@@ -1,3 +1,6 @@
 .content {
-	margin-left: $sidebar-width;
+	position: absolute;
+	padding: 20px;
+	left: $sidebar-width;
+	right: 0;
 }
