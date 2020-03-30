@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SocialLink from './../components/home/SocialLink';
 import Recommendation from "./../components/home/Recommendation";
 import recommendations from "./../constants/home/recommendations";
+import ReactGa from 'react-ga';
 
 export default () => {
+
+	useEffect(() => {
+		ReactGa.initialize('UA-162186498-1');
+		ReactGa.pageview('/');
+	}, []);
+
 	return (
 		<div className="container">
 			<div className="sidebar">
