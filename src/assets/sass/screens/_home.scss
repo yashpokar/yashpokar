@@ -71,3 +71,32 @@
         }
     }
 }
+
+@media only screen and (max-width: $mobile-width) {
+	#home-page-wrapper {
+        width: 100%;
+    }
+
+    .recommendations__item {
+        width: 100%;
+        margin-bottom: 30px;
+        line-height: 1.5rem;
+
+        &:nth-child(2n) {
+            left: 0;
+        }
+
+        &:nth-child(2n+1) {
+            left: 0;
+        }
+
+        @include e(content) {
+            font-size: 0.8rem;
+            padding: 1rem 1.6rem;
+        }
+
+        @include e(author) {
+            font-size: .76rem;
+        }
+    }
+}

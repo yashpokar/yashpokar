@@ -4,3 +4,11 @@
 	left: $sidebar-width;
 	right: 0;
 }
+
+@media only screen and (max-width: $mobile-width) {
+	.content {
+		left: 0;
+		min-height: $sidebar-height;
+		position: static;
+	}
+}

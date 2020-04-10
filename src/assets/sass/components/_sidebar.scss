@@ -113,3 +113,46 @@
 		}
 	}
 }
+
+@media only screen and (max-width: $mobile-width) {
+	.sidebar {
+		top: 0;
+		left: 0;
+		right: 0;
+		min-height: $sidebar-height;
+		width: 100%;
+		position: static;
+		display: flex;
+		flex-direction: column;
+
+		@include e(intro) {
+			@include e(image) {
+				height: 120px;
+				width: 120px;
+			}
+
+			@include e(name) {
+				font-size: 1.6rem;
+				text-align: center;
+
+				&::after {
+					margin: 0 auto 10px auto;
+				}
+			}
+
+			@include e(contact) {
+				padding: 6px 8px;
+				transform: rotate(0deg);
+			}
+
+			@include e(email-address) {
+				padding: 6px 8px;
+			}
+		}
+
+		@include e(footer) {
+			width: 100%;
+			position: absolute;
+		}
+	}
+}

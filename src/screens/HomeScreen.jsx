@@ -57,6 +57,7 @@ export default () => {
 							{
 								recommendations.map(recommendation => (
 									<Recommendation
+										key={recommendation.author.name}
 										author={recommendation.author.name}
 										headline={recommendation.author.headline}
 										address={recommendation.author.address}
