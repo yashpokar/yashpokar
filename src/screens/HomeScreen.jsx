@@ -16,7 +16,7 @@ export default () => {
 			<div className="sidebar">
 				<div className="sidebar__intro">
 					<img
-						src="https://yashpokar-dot-com.s3.us-east-2.amazonaws.com/B612_20191226_164531_202+(1).jpg"
+						src="https://yashpokar-dot-com.s3.us-east-2.amazonaws.com/yashpokar.jpg"
 						alt="Yash Pokar"
 						className="sidebar__intro__image"
 					/>
