@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SocialLink from './../components/home/SocialLink'
 import Recommendation from './../components/home/Recommendation'
 import recommendations from './../constants/home/recommendations'
@@ -8,12 +8,39 @@ import skills from './../constants/home/skills'
 const CAREER_START = new Date('2017-12-01')
 
 const yearsOfExperience = () => {
-    const now = new Date()
-    const years = (now - CAREER_START) / (1000 * 60 * 60 * 24 * 365.25)
+    const years = (new Date() - CAREER_START) / (1000 * 60 * 60 * 24 * 365.25)
     return Math.floor(years) + '+'
 }
 
+const ROLES = [
+    'Senior Full Stack Developer',
+    'AI / ML Engineer',
+    'Systems Architect',
+]
+
 export default function HomeScreen() {
+    const [roleIdx, setRoleIdx]     = useState(0)
+    const [displayed, setDisplayed] = useState('')
+    const [deleting, setDeleting]   = useState(false)
+
+    // Typewriter
+    useEffect(() => {
+        const role = ROLES[roleIdx]
+        let t
+        if (!deleting && displayed.length < role.length) {
+            t = setTimeout(() => setDisplayed(role.slice(0, displayed.length + 1)), 75)
+        } else if (!deleting && displayed.length === role.length) {
+            t = setTimeout(() => setDeleting(true), 2600)
+        } else if (deleting && displayed.length > 0) {
+            t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 38)
+        } else if (deleting && displayed.length === 0) {
+            setDeleting(false)
+            setRoleIdx((roleIdx + 1) % ROLES.length)
+        }
+        return () => clearTimeout(t)
+    }, [displayed, deleting, roleIdx])
+
+    // Scroll reveal
     useEffect(() => {
         const io = new IntersectionObserver(
             entries => entries.forEach(e => {
@@ -55,39 +82,82 @@ export default function HomeScreen() {
 
             {/* ── Hero ── */}
             <section id="about" className="hero">
-                <div className="hero__photo-wrap reveal reveal--d1">
-                    <img src="/me.jpg" alt="Yash Pokar" className="hero__photo" />
+                <div className="hero__content">
+
+                    {/* Left — text */}
+                    <div className="hero__left">
+                        <div className="hero__eyebrow reveal">
+                            Full-Stack &amp; AI Engineering
+                        </div>
+
+                        <h1 className="hero__name reveal reveal--d1">
+                            Yash<br />Pokar
+                        </h1>
+
+                        <div className="hero__role-wrap reveal reveal--d2">
+                            <span className="hero__role">{displayed}</span>
+                            <span className="hero__cursor" aria-hidden="true" />
+                        </div>
+
+                        <div className="hero__divider reveal reveal--d2" />
+
+                        <p className="hero__bio reveal reveal--d3">
+                            Building scalable systems and AI-powered products with {yearsOfExperience()} years
+                            of experience. Currently at Twilio · Segment R&amp;D — delivered the company's
+                            first customer-facing AI product.
+                        </p>
+
+                        <div className="hero__location reveal reveal--d3">
+                            <span className="hero__location__dot" />
+                            Twilio · Segment R&amp;D &nbsp;—&nbsp; Bangalore, India
+                        </div>
+
+                        <div className="hero__contacts reveal reveal--d4">
+                            <a href="mailto:hello@yashpokar.com" className="hero__contact">
+                                <i className="fa fa-envelope-o" aria-hidden="true" />
+                                hello@yashpokar.com
+                            </a>
+                            <span className="hero__contact">
+                                <i className="fa fa-phone" aria-hidden="true" />
+                                (+91) 940-956-7085
+                            </span>
+                        </div>
+
+                        <ul className="hero__social reveal reveal--d4">
+                            <SocialLink icon="github"         url="https://github.com/yashpokar" />
+                            <SocialLink icon="linkedin"       url="https://linkedin.com/in/yashpokar" />
+                            <SocialLink icon="medium"         url="https://yashpokar.medium.com" />
+                            <SocialLink icon="stack-overflow" url="https://stackoverflow.com/users/5939254/yash-pokar" />
+                            <SocialLink icon="twitter"        url="https://twitter.com/yashpokar" />
+                            <SocialLink icon="instagram"      url="https://instagram.com/yashpokar" />
+                        </ul>
+                    </div>
+
+                    {/* Right — photo */}
+                    <div className="hero__right reveal reveal--d2">
+                        <div className="hero__photo-frame">
+                            <div className="hero__photo-ring" aria-hidden="true" />
+                            <div className="hero__photo-ring hero__photo-ring--outer" aria-hidden="true" />
+                            <img src="/me.jpg" alt="Yash Pokar" className="hero__photo" />
+
+                            {/* Floating badge — company */}
+                            <div className="hero__badge hero__badge--company">
+                                <div className="hero__badge__dot" />
+                                <div>
+                                    <div className="hero__badge__title">Twilio · Segment</div>
+                                    <div className="hero__badge__sub">Bangalore, India</div>
+                                </div>
+                            </div>
+
+                            {/* Floating badge — experience */}
+                            <div className="hero__badge hero__badge--exp">
+                                <div className="hero__badge__num">{yearsOfExperience()}</div>
+                                <div className="hero__badge__sub">Years Exp.</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-                <h1 className="hero__name reveal reveal--d2">Yash Pokar</h1>
-                <p className="hero__role reveal reveal--d3">Senior Full Stack Developer</p>
-                <div className="hero__divider reveal reveal--d3" />
-
-                <p className="hero__bio reveal reveal--d3">
-                    Building scalable systems and AI-powered products with {yearsOfExperience()} years of experience.
-                    Currently at Twilio · Segment R&amp;D — delivered the company's first customer-facing AI product.
-                </p>
-
-                <div className="hero__location reveal reveal--d4">
-                    <span className="hero__location__dot" />
-                    Twilio · Segment R&amp;D &nbsp;—&nbsp; Bangalore, India
-                </div>
-
-                <div className="hero__contacts reveal reveal--d4">
-                    <a href="mailto:hello@yashpokar.com" className="hero__contact">
-                        hello@yashpokar.com
-                    </a>
-                    <span className="hero__contact">(+91) 940-956-7085</span>
-                </div>
-
-                <ul className="hero__social reveal reveal--d4">
-                    <SocialLink icon="github"         url="https://github.com/yashpokar" />
-                    <SocialLink icon="linkedin"       url="https://linkedin.com/in/yashpokar" />
-                    <SocialLink icon="medium"         url="https://yashpokar.medium.com" />
-                    <SocialLink icon="stack-overflow" url="https://stackoverflow.com/users/5939254/yash-pokar" />
-                    <SocialLink icon="twitter"        url="https://twitter.com/yashpokar" />
-                    <SocialLink icon="instagram"      url="https://instagram.com/yashpokar" />
-                </ul>
 
                 <div className="hero__scroll" aria-hidden="true">
                     <span>Scroll</span>
@@ -123,7 +193,9 @@ export default function HomeScreen() {
             {/* ── Skills ── */}
             <section id="skills" className="skills">
                 <div className="section-header reveal">
-                    <p className="section-label">Tech Stack</p>
+                    <p className="section-label">
+                        <span className="section-num">01</span>Tech Stack
+                    </p>
                     <h2 className="section-title">Skills</h2>
                 </div>
 
@@ -148,10 +220,12 @@ export default function HomeScreen() {
             <section id="experience" className="journey">
                 <div className="journey__inner">
                     <div className="section-header reveal">
-                        <p className="section-label">Career</p>
+                        <p className="section-label">
+                            <span className="section-num">02</span>Career
+                        </p>
                         <h2 className="section-title">Experience</h2>
                         <p className="section-subtitle">
-                            7+ years of building, scaling, and shipping across the full stack.
+                            {yearsOfExperience()} years of building, scaling, and shipping across the full stack.
                         </p>
                     </div>
 
@@ -168,7 +242,13 @@ export default function HomeScreen() {
                                         <div className="journey__item__dot__ring" />
                                     </div>
                                     <div className="journey__item__card">
-                                        <h3 className="journey__item__title">{item.title}</h3>
+                                        <div className="journey__item__header">
+                                            <div>
+                                                <div className="journey__item__company">{item.company}</div>
+                                                <div className="journey__item__role">{item.role}</div>
+                                            </div>
+                                            <span className="journey__item__metric">{item.metric}</span>
+                                        </div>
                                         <p className="journey__item__desc">{item.description}</p>
                                         <div className="journey__item__tags">
                                             {item.tags.map(tag => (
@@ -186,7 +266,9 @@ export default function HomeScreen() {
             {/* ── Testimonials ── */}
             <section id="testimonials" className="testimonials">
                 <div className="section-header reveal">
-                    <p className="section-label">Social Proof</p>
+                    <p className="section-label">
+                        <span className="section-num">03</span>Social Proof
+                    </p>
                     <h2 className="section-title">Commendations</h2>
                     <p className="section-subtitle">
                         What colleagues, founders, and managers say about working with me.
