@@ -1,24 +1,16 @@
-import React, { Suspense, lazy } from 'react';
-import { Provider } from 'react-redux';
-import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router'
 
-const HomeScreen = lazy(() => import('./screens/HomeScreen'));
+const HomeScreen = lazy(() => import('./screens/HomeScreen'))
 
-const Root = ({ store }) => (
-	<Provider store={store}>
-		<Router>
-			<Switch>
-				<Suspense fallback={<div>Loading...</div>}>
-					<Route path="/" component={HomeScreen} extact />
-				</Suspense>
-			</Switch>
-		</Router>
-	</Provider>
-);
+const Root = () => (
+    <Router>
+        <Suspense fallback={<div />}>
+            <Routes>
+                <Route path="/" element={<HomeScreen />} />
+            </Routes>
+        </Suspense>
+    </Router>
+)
 
-Root.propTypes = {
-	store: PropTypes.object.isRequired
-}
-
-export default Root;
+export default Root

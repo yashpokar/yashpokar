@@ -1,5 +1,13 @@
 export default [
     {
+        content: `Yash is a motivated and hardworking engineer who is steadily growing in his craft. He is a collaborative team player, always open to learning and taking on new challenges. Yash demonstrates a strong willingness to improve and takes ownership of his work, showing commitment to delivering quality results. While still developing in his role, he's eager to ramp up and build on his skills. It's been great working with Yash, and I'm confident he'll continue to grow and make valuable contributions.`,
+        author: {
+            name: "Gagan Sikri",
+            headline: "Product @ Okta | ex: Twilio, Segment, FusionCharts",
+            address: "Managed Yash directly · Sep 2024"
+        }
+    },
+    {
         content: `Yash has a great tenacity to work on any problem and to find solutions that are either using out of the box solution or through rigirous efforts of custom code. he is phenomenal at his work ethics and goes and beyond in his line of duty.`,
         author: {
             name: "Rupesh Desai",

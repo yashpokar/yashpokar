@@ -1,30 +1,34 @@
-import React from 'react';
-import PropType from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const Recommendation = ({ content, author, headline, address }) => {
-    return (
-        <div className="recommendations__item pointer">
-            <div className="recommendations__item__content">
-                {content}
-			</div>
+const initials = name =>
+    name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
 
-            <div className="recommendations__item__author">
-                {author}
-
+const Recommendation = ({ content, author, headline, address, className }) => (
+    <div className={`recommendations__item${className ? ' ' + className : ''}`}>
+        <div className="recommendations__item__content">
+            {content}
+        </div>
+        <div className="recommendations__item__author">
+            <div className="recommendations__item__avatar">
+                {initials(author)}
+            </div>
+            <div>
+                <div className="recommendations__item__name">{author}</div>
                 <div className="recommendations__item__author__headline">
-                    {headline},<br />
-                    {address}
+                    {headline}<br />{address}
                 </div>
             </div>
         </div>
-    );
-}
+    </div>
+)
 
 Recommendation.propTypes = {
-    content: PropType.string.isRequired,
-    author: PropType.string.isRequired,
-    headline: PropType.string.isRequired,
-    address: PropType.string.isRequired
-};
+    content:   PropTypes.string.isRequired,
+    author:    PropTypes.string.isRequired,
+    headline:  PropTypes.string.isRequired,
+    address:   PropTypes.string.isRequired,
+    className: PropTypes.string,
+}
 
-export default Recommendation;
+export default Recommendation
