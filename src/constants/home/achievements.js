@@ -27,7 +27,7 @@ export default [
         year: "2022",
         company: "Twilio · Segment R&D",
         role: "Senior Software Developer",
-        metric: "Segment's first AI product",
+        metric: "Org's leading AI initiative",
         description: "Delivered Segment's first customer-facing AI product — Function's Copilot — at a company hackathon, letting customers generate Segment functions from plain-English prompts. Built a RAG pipeline, LangGraph-powered AI agent, and an internal knowledge base using AWS SageMaker with Mistral 7B (later Llama 3 8B-Instruct).",
         tags: ["Golang", "TypeScript", "React", "LangChain", "LangGraph", "OpenAI", "Llama 3", "SageMaker", "Kafka", "FastAPI"]
     },

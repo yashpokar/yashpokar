@@ -103,8 +103,8 @@ export default function HomeScreen() {
 
                         <p className="hero__bio reveal reveal--d3">
                             Building scalable systems and AI-powered products with {yearsOfExperience()} years
-                            of experience. Currently at Twilio · Segment R&amp;D — delivered the company's
-                            first customer-facing AI product.
+                            of experience. Currently at Twilio · Segment R&amp;D — working on the
+                            organisation's leading AI product initiatives.
                         </p>
 
                         <div className="hero__location reveal reveal--d3">
