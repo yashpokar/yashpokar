@@ -292,7 +292,7 @@ export default function HomeScreen() {
             {/* ── Footer ── */}
             <footer className="site-footer">
                 <p>
-                    &copy; {new Date().getFullYear()} &nbsp; Yash Pokar &nbsp;—&nbsp; Built with React &amp; Vite
+                    &copy; {new Date().getFullYear()} &nbsp; Yash Pokar &nbsp;—&nbsp; All Rights Reserved
                 </p>
             </footer>
         </div>
