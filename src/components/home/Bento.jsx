@@ -35,7 +35,7 @@ export default function Bento({ years }) {
         <div ref={ref} className="bento">
             <div className="tile tile--wide" onPointerMove={track} data-reveal>
                 <div className="tile__kicker">Twilio · Segment R&amp;D</div>
-                <div className="tile__big">Segment's first customer-facing AI feature</div>
+                <div className="tile__big">Twilio's first customer-facing AI product</div>
                 <p className="tile__body">Functions Copilot: plain-English prompts to working Segment functions. Hackathon demo to production: retrieval, a LangGraph agent, a streaming editor integration, and the eval set that made every change measurable.</p>
             </div>
             <div className="tile" onPointerMove={track} data-reveal style={{ '--d': '80ms' }}>

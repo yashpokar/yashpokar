@@ -48,7 +48,7 @@ var yash = Engineer{
     <td align="center" width="25%"><h3>15×</h3><sub>crawler speed-up by<br/>dropping Selenium</sub></td>
     <td align="center" width="25%"><h3>~60%</h3><sub>infra cost cut with spot<br/>instances + Kubernetes</sub></td>
     <td align="center" width="25%"><h3>3.5h → 20m</h3><sub>nightly SKU sync<br/>after a concurrency rewrite</sub></td>
-    <td align="center" width="25%"><h3>🏆</h3><sub>Segment's first customer-facing<br/>AI feature, from a hackathon</sub></td>
+    <td align="center" width="25%"><h3>🏆</h3><sub>Twilio's first customer-facing<br/>AI product, from a hackathon</sub></td>
   </tr>
 </table>
 
@@ -112,7 +112,7 @@ Long on specifics, short on hype. Full archive at [yashpokar.com/blog](https://y
 
 | | Where | What |
 |---|---|---|
-| **2022 →** | **Twilio · Segment R&D** | Shipped Segment's first customer-facing AI product from a hackathon. LangGraph agents, retrieval, streaming editor integration, and the eval harness behind it. |
+| **2022 →** | **Twilio · Segment R&D** | Shipped Twilio's first customer-facing AI product from a hackathon. LangGraph agents, retrieval, streaming editor integration, and the eval harness behind it. |
 | **2020** | **Zivame** | Cut infra cost ~60% moving to Kubernetes on spot. Led the multi-warehouse system with a team of 3. |
 | **2019** | **Itilite** | Hotel booking integrations, and an invoice + GST reconciliation system that still makes the company money unattended. |
 | **2017** | **SKU Monetate** | AWS crawling infrastructure, 15× faster without Selenium. Core of SellerERP and SellerCRM. |

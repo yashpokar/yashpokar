@@ -6,7 +6,7 @@ export default [
         org: 'Twilio · Segment R&D',
         year: '2022 – now',
         kind: 'AI product',
-        metric: "Segment's first customer-facing AI feature",
+        metric: "Twilio's first customer-facing AI product",
         problem: 'Segment Functions are powerful but need JavaScript. Customers who understood their data but not the runtime were stuck.',
         did: [
             'Turned a hackathon demo into a shipped feature: plain-English prompts become working Segment functions.',
@@ -14,7 +14,7 @@ export default [
             'Wired the agent into the editor with streaming, tool-call progress and human approval before anything deploys.',
             'Built the eval harness that made every prompt and model change a measured pull request.',
         ],
-        result: 'Shipped to customers as the first AI feature of its kind at Segment, with an eval gate behind every change.',
+        result: "Shipped to customers as Twilio's first customer-facing AI product, with an eval gate behind every change.",
         tags: ['LangGraph', 'RAG', 'Evals', 'Golang', 'TypeScript', 'React'],
         post: { slug: 'shipping-segment-functions-copilot-from-a-hackathon', label: 'Read the write-up' },
     },

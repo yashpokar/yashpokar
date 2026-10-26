@@ -19,7 +19,7 @@ const timeline = [
     ['2017', 'First job, SKU Monetate', 'Crawling infrastructure, and the pipeline that stopped needing browsers.'],
     ['2019', 'Itilite Technologies', 'Travel integrations, and the favour that became a finance system.'],
     ['2020', 'Zivame', "India's largest lingerie platform. Kubernetes on spot, a faster catalogue sync, a multi-warehouse system."],
-    ['2022', 'Twilio · Segment R&D', 'From a hackathon demo to the first customer-facing AI feature, and the agent protocols that came after.'],
+    ['2022', 'Twilio · Segment R&D', "From a hackathon demo to Twilio's first customer-facing AI product, and the agent protocols that came after."],
 ]
 
 export default function AboutScreen() {

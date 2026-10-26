@@ -29,7 +29,7 @@ export default [
         company: "Twilio · Segment R&D",
         role: "Senior Software Developer",
         metric: "Org's leading AI initiative",
-        description: "Delivered Segment's first customer-facing AI product — Functions Copilot — from a company hackathon, letting customers generate Segment functions from plain-English prompts. Built the RAG pipeline, the LangGraph agent, the streaming editor integration, and the eval harness that let us change prompts and models safely. Also shipped an internal knowledge base on self-hosted open models.",
+        description: "Delivered Twilio's first customer-facing AI product — Functions Copilot — from a company hackathon, letting customers generate Segment functions from plain-English prompts. Built the RAG pipeline, the LangGraph agent, the streaming editor integration, and the eval harness that let us change prompts and models safely. Also shipped an internal knowledge base on self-hosted open models.",
         tags: ["Golang", "TypeScript", "React", "LangGraph", "RAG", "Evals", "OpenAI", "SageMaker", "Kafka", "FastAPI"]
     },
 ]
