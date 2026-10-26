@@ -25,3 +25,5 @@ yarn-error.log*
 # build output & browser test artifacts
 /dist
 /.playwright-mcp
+.vercel
+.env*
