@@ -1,50 +1,22 @@
-import React, { Suspense, lazy, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router'
+import React, { lazy } from 'react'
+import { BrowserRouter } from 'react-router'
+import AppShell from './AppShell'
 
-import Cursor from './components/fx/Cursor'
-import Layout from './components/layout/Layout'
-
-const HomeScreen     = lazy(() => import('./screens/HomeScreen'))
-const BlogScreen     = lazy(() => import('./screens/BlogScreen'))
-const PostScreen     = lazy(() => import('./screens/PostScreen'))
-const WorkScreen     = lazy(() => import('./screens/WorkScreen'))
-const AboutScreen    = lazy(() => import('./screens/AboutScreen'))
-const SkillsScreen   = lazy(() => import('./screens/SkillsScreen'))
-const ContactScreen  = lazy(() => import('./screens/ContactScreen'))
-const NotFoundScreen = lazy(() => import('./screens/NotFoundScreen'))
-
-/** Scroll to top on route change, or to the hash target when one is present. */
-const ScrollManager = () => {
-    const { pathname, hash } = useLocation()
-    useEffect(() => {
-        if (hash) {
-            const el = document.querySelector(hash)
-            if (el) { el.scrollIntoView({ behavior: 'smooth' }); return }
-        }
-        window.scrollTo({ top: 0 })
-    }, [pathname, hash])
-    return null
+const screens = {
+    Home:     lazy(() => import('./screens/HomeScreen')),
+    Work:     lazy(() => import('./screens/WorkScreen')),
+    About:    lazy(() => import('./screens/AboutScreen')),
+    Skills:   lazy(() => import('./screens/SkillsScreen')),
+    Blog:     lazy(() => import('./screens/BlogScreen')),
+    Post:     lazy(() => import('./screens/PostScreen')),
+    Contact:  lazy(() => import('./screens/ContactScreen')),
+    NotFound: lazy(() => import('./screens/NotFoundScreen')),
 }
 
-const Root = () => (
-    <Router>
-        <ScrollManager />
-        <Cursor />
-        <Suspense fallback={<div className="route-loading" />}>
-            <Routes>
-                <Route element={<Layout />}>
-                    <Route path="/"           element={<HomeScreen />} />
-                    <Route path="/work"       element={<WorkScreen />} />
-                    <Route path="/about"      element={<AboutScreen />} />
-                    <Route path="/skills"     element={<SkillsScreen />} />
-                    <Route path="/blog"       element={<BlogScreen />} />
-                    <Route path="/blog/:slug" element={<PostScreen />} />
-                    <Route path="/contact"    element={<ContactScreen />} />
-                    <Route path="*"           element={<NotFoundScreen />} />
-                </Route>
-            </Routes>
-        </Suspense>
-    </Router>
-)
-
-export default Root
+export default function Root() {
+    return (
+        <BrowserRouter>
+            <AppShell screens={screens} />
+        </BrowserRouter>
+    )
+}

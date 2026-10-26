@@ -31,8 +31,8 @@ const LANGUAGES = {
 }
 import CodeBlock from '../components/blog/CodeBlock'
 import { getPost, adjacent, posts } from '../lib/posts'
+import { SITE } from '../seo'
 import { slugify } from '../lib/frontmatter'
-import useMeta from '../hooks/useMeta'
 
 const text = node => {
     if (typeof node === 'string') return node
@@ -71,7 +71,6 @@ export default function PostScreen() {
     const [progress, setProgress] = useState(0)
     const [activeId, setActiveId] = useState(null)
 
-    useMeta(post?.title, post?.summary)
 
     // Reading progress bar
     useEffect(() => {
@@ -105,7 +104,7 @@ export default function PostScreen() {
         .filter(p => p.overlap > 0)
         .sort((a, b) => b.overlap - a.overlap || (a.date < b.date ? 1 : -1))
         .slice(0, 3)
-    const url = typeof window !== 'undefined' ? window.location.href : ''
+    const url = `${SITE}/blog/${slug}`
     const h2s = post.headings.filter(h => h.depth === 2)
 
     return (

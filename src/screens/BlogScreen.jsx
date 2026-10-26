@@ -3,14 +3,12 @@ import { useSearchParams } from 'react-router'
 import PageHeader from '../components/layout/PageHeader'
 import PostRow from '../components/blog/PostRow'
 import { posts, tags } from '../lib/posts'
-import useMeta from '../hooks/useMeta'
 
 export default function BlogScreen() {
     const [params, setParams] = useSearchParams()
     const active = params.get('tag')
     const [query, setQuery] = useState('')
 
-    useMeta('Blog', 'Notes on backend systems, infrastructure, and building AI products — by Yash Pokar.')
 
     const visible = useMemo(() => {
         const q = query.trim().toLowerCase()

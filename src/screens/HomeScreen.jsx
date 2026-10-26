@@ -7,7 +7,6 @@ import ParticleWordmark from '../components/fx/ParticleWordmark'
 import projects from '../data/projects'
 import useStars from '../hooks/useStars'
 import { posts } from '../lib/posts'
-import useMeta from '../hooks/useMeta'
 import useReveal from '../hooks/useReveal'
 
 const years = Math.floor((Date.now() - new Date('2017-12-01')) / (1000 * 60 * 60 * 24 * 365.25))
@@ -41,7 +40,6 @@ function OssCard({ p, delay }) {
 }
 
 export default function HomeScreen() {
-    useMeta(null, 'Yash Pokar — Senior Full Stack Developer at Twilio · Segment R&D, Bangalore. Agents, evals, generative UI and the infrastructure under them.')
     useReveal()
 
     return (

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router'
 import PageHeader from '../components/layout/PageHeader'
+import Faq from '../components/about/Faq'
 import Recommendation from '../components/home/Recommendation'
 import recommendations from '../constants/home/recommendations'
-import useMeta from '../hooks/useMeta'
 import useReveal from '../hooks/useReveal'
 
 const years = Math.floor((Date.now() - new Date('2017-12-01')) / (1000 * 60 * 60 * 24 * 365.25))
@@ -23,7 +23,6 @@ const timeline = [
 ]
 
 export default function AboutScreen() {
-    useMeta('About', 'About Yash Pokar: senior full stack developer on the Segment R&D team at Twilio, based in Bangalore. How I work and what I care about.')
     useReveal()
     const lead = { content: "If you want to get the best out of him don't tell him how it should be done, he will figure out the best way.", author: 'Amit Basuri', headline: 'Software Engineer at Amazon', highlights: ['figure out the best way'] }
 
@@ -76,6 +75,16 @@ export default function AboutScreen() {
                             </li>
                         ))}
                     </ol>
+                </div>
+            </section>
+
+            <section className="section">
+                <div className="wrap">
+                    <div className="section__head" data-reveal>
+                        <h2 className="section__title">Questions people ask</h2>
+                        <p className="section__note">Short, direct answers.</p>
+                    </div>
+                    <div data-reveal><Faq /></div>
                 </div>
             </section>
 

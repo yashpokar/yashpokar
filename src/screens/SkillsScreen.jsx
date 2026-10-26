@@ -8,7 +8,6 @@ import EvalLab from '../components/skills/EvalLab'
 import StackYears from '../components/skills/StackYears'
 import decisions from '../data/decisions'
 import { posts } from '../lib/posts'
-import useMeta from '../hooks/useMeta'
 import useReveal from '../hooks/useReveal'
 
 const protocols = [
@@ -20,7 +19,6 @@ const protocols = [
 const titleOf = slug => posts.find(p => p.slug === slug)?.title
 
 export default function SkillsScreen() {
-    useMeta('Skills', 'Skills with evidence: generative AI, agent protocols (MCP, A2A, AG-UI, A2UI), evals, backend, frontend and infrastructure, linked to the projects and posts behind them.')
     useReveal()
     return (
         <>

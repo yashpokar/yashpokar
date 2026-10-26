@@ -2,24 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#070b14" />
-    <meta name="description" content="Yash Pokar — Senior Full Stack Developer at Twilio · Segment R&D, Bangalore. Backend systems, infrastructure, and AI products." />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Yash Pokar — Senior Full Stack Developer" />
-    <meta property="og:description" content="Backend systems, infrastructure, and AI products. Writing at yashpokar.com/blog." />
-    <meta property="og:image" content="https://yashpokar.com/me.jpg" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@yashpokar" />
     <link rel="alternate" type="application/rss+xml" title="Yash Pokar — Blog" href="/rss.xml" />
-    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <title>Yash Pokar — Senior Full Stack Developer</title>
+    <!--seo-->
 
     <!-- Resolve theme before first paint to avoid a flash -->
     <script>
       (function () {
+        document.documentElement.classList.add('js');
         try {
           var t = localStorage.getItem('yp-theme');
           if (t !== 'light' && t !== 'dark') {
@@ -40,7 +35,6 @@
     />
 </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/index.jsx"></script>
   </body>

@@ -5,11 +5,11 @@ import React, { useEffect, useRef } from 'react'
  * middle, services and the LLM layer on the right. Packets travel the edges on SVG
  * motion paths; the panel tilts toward the pointer and drifts on scroll.
  */
-const W = 128, H = 56
+const W = 150, H = 56
 const NODES = {
-    events:   { x: 16,  y: 20,  label: 'Events',        sub: 'web · mobile · server' },
+    events:   { x: 16,  y: 20,  label: 'Events',        sub: 'web · mobile · API' },
     docs:     { x: 16,  y: 112, label: 'Documents',     sub: 'knowledge base' },
-    users:    { x: 16,  y: 296, label: 'People',        sub: 'approve · edit · ask' },
+    users:    { x: 16,  y: 296, label: 'People',        sub: 'approve · edit' },
     kafka:    { x: 196, y: 20,  label: 'Kafka',         sub: 'streams · topics' },
     rag:      { x: 196, y: 112, label: 'Vector store',  sub: 'embeddings · RAG' },
     tools:    { x: 196, y: 204, label: 'Tools',         sub: 'MCP servers' },
@@ -90,7 +90,7 @@ export default function SystemDiagram() {
                     <span className="diagram__bar__right">live</span>
                 </div>
 
-                <svg viewBox="0 0 520 388" className="diagram__svg" role="img" aria-label="Diagram of events and documents flowing through Kafka and a vector store, with MCP tools and an eval gate feeding a LangGraph agent that streams over AG-UI into a generative A2UI interface that people interact with">
+                <svg viewBox="0 0 540 388" className="diagram__svg" role="img" aria-label="Diagram of events and documents flowing through Kafka and a vector store, with MCP tools and an eval gate feeding a LangGraph agent that streams over AG-UI into a generative A2UI interface that people interact with">
                     <defs>
                         <linearGradient id="edge" x1="0" x2="1" y1="0" y2="0">
                             <stop offset="0"   stopColor="var(--accent)" stopOpacity="0.15" />

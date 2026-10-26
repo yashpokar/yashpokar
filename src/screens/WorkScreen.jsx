@@ -4,7 +4,6 @@ import PageHeader from '../components/layout/PageHeader'
 import CareerTrack from '../components/home/CareerTrack'
 import achievements from '../constants/home/achievements'
 import projects from '../data/projects'
-import useMeta from '../hooks/useMeta'
 import useReveal from '../hooks/useReveal'
 
 const experience = [...achievements].reverse().map((item, i) => ({
@@ -15,7 +14,6 @@ const experience = [...achievements].reverse().map((item, i) => ({
 const kinds = ['All', ...new Set(projects.map(p => p.kind))]
 
 export default function WorkScreen() {
-    useMeta('Work', 'Selected projects and career timeline: Segment, Zivame, Itilite and SKU Monetate. Agents, evals, Kubernetes, data pipelines.')
     const [kind, setKind] = useState('All')
     const visible = useMemo(() => projects.filter(p => kind === 'All' || p.kind === kind), [kind])
     useReveal([kind])

@@ -27,3 +27,4 @@ yarn-error.log*
 /.playwright-mcp
 .vercel
 .env*
+/dist-server

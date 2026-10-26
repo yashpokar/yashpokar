@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageHeader from '../components/layout/PageHeader'
-import useMeta from '../hooks/useMeta'
 import useReveal from '../hooks/useReveal'
 
 const EMAIL = 'hello@yashpokar.com'
@@ -18,13 +17,18 @@ const links = [
 ]
 
 export default function ContactScreen() {
-    useMeta('Contact', 'Get in touch with Yash Pokar: hard problems, AI features, or talking shop.')
     useReveal()
     const [copied, setCopied] = useState(false)
     const copy = async () => {
         try { await navigator.clipboard.writeText(EMAIL); setCopied(true); setTimeout(() => setCopied(false), 1800) } catch { /* blocked */ }
     }
-    const time = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }).format(new Date())
+    const [time, setTime] = useState('')
+    useEffect(() => {
+        const fmt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' })
+        const tick = () => setTime(fmt.format(new Date()))
+        tick(); const id = setInterval(tick, 30000)
+        return () => clearInterval(id)
+    }, [])
 
     return (
         <>
@@ -42,7 +46,7 @@ export default function ContactScreen() {
                         <div className="mailcard__row">
                             <a href={`mailto:${EMAIL}`} className="btn btn--primary" data-magnetic><span className="btn__bg" />Open mail</a>
                             <button type="button" className="btn btn--ghost" onClick={copy} data-magnetic>{copied ? 'Copied ✓' : 'Copy address'}</button>
-                            <span className="mailcard__tz"><i /> Bangalore, India · {time} IST</span>
+                            <span className="mailcard__tz"><i /> Bangalore, India{time && ` · ${time} IST`}</span>
                         </div>
                     </div>
 
