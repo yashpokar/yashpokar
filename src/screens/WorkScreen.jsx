@@ -64,7 +64,10 @@ export default function WorkScreen() {
                                     </dl>
                                     <div className="case__foot">
                                         <div className="stop__tech">{p.tags.map(t => <span key={t}>{t}</span>)}</div>
-                                        {p.post && <Link to={`/blog/${p.post.slug}`} className="case__link">{p.post.label} →</Link>}
+                                        <div className="case__links">
+                                            {p.repo && <a href={`https://github.com/${p.repo}`} target="_blank" rel="noopener noreferrer" className="case__link">View on GitHub ↗</a>}
+                                            {p.post && <Link to={`/blog/${p.post.slug}`} className="case__link">{p.post.label} →</Link>}
+                                        </div>
                                     </div>
                                 </div>
                             </article>

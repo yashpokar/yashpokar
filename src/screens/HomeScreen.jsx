@@ -5,11 +5,13 @@ import Bento from '../components/home/Bento'
 import PostRow from '../components/blog/PostRow'
 import ParticleWordmark from '../components/fx/ParticleWordmark'
 import projects from '../data/projects'
+import useStars from '../hooks/useStars'
 import { posts } from '../lib/posts'
 import useMeta from '../hooks/useMeta'
 import useReveal from '../hooks/useReveal'
 
 const years = Math.floor((Date.now() - new Date('2017-12-01')) / (1000 * 60 * 60 * 24 * 365.25))
+const oss = projects.filter(p => p.kind === 'Open source')
 const WORDS = ['AGENTS', 'EVALS', 'KAFKA', 'GEN UI', 'SHIP IT']
 
 const explore = [
@@ -18,6 +20,25 @@ const explore = [
     { to: '/skills', title: 'Skills', body: 'The stack on a globe, and the four agent protocol layers explained.' },
     { to: '/blog',   title: 'Blog',   body: `${posts.length} posts on agents, evals, generative UI, infrastructure and data.` },
 ]
+
+function OssCard({ p, delay }) {
+    const stars = useStars(p.repo, p.stars)
+    return (
+        <article className="osscard" data-reveal style={{ '--d': `${delay}ms` }}>
+            <div className="osscard__top">
+                <span className="osscard__kind">{p.year}</span>
+                <a className="osscard__stars" href={`https://github.com/${p.repo}`} target="_blank" rel="noopener noreferrer" aria-label={`${stars} stars on GitHub`}>★ {stars}</a>
+            </div>
+            <h3 className="osscard__title">{p.title}</h3>
+            <p className="osscard__blurb">{p.blurb}</p>
+            <div className="stop__tech">{p.tags.map(t => <span key={t}>{t}</span>)}</div>
+            <div className="osscard__links">
+                <Link to={`/work#${p.slug}`} className="textlink">Read the story</Link>
+                <a href={`https://github.com/${p.repo}`} target="_blank" rel="noopener noreferrer" className="textlink">GitHub ↗</a>
+            </div>
+        </article>
+    )
+}
 
 export default function HomeScreen() {
     useMeta(null, 'Yash Pokar — Senior Full Stack Developer at Twilio · Segment R&D, Bangalore. Agents, evals, generative UI and the infrastructure under them.')
@@ -53,6 +74,18 @@ export default function HomeScreen() {
             <section className="section section--tight">
                 <div className="wrap">
                     <Bento years={years} />
+                </div>
+            </section>
+
+            <section className="section">
+                <div className="wrap">
+                    <div className="section__head" data-reveal>
+                        <h2 className="section__title">Built in the open</h2>
+                        <p className="section__note">Two public projects on GitHub that people have starred.</p>
+                    </div>
+                    <div className="oss">
+                        {oss.map((p, i) => <OssCard key={p.slug} p={p} delay={i * 90} />)}
+                    </div>
                 </div>
             </section>
 
@@ -95,7 +128,7 @@ export default function HomeScreen() {
                         <Link to="/work" className="btn btn--ghost">All projects</Link>
                     </div>
                     <div className="post-grid">
-                        {[projects[0], projects[1], projects[5]].map((p, i) => (
+                        {['functions-copilot', 'spot-kubernetes', 'selenium-free-crawler'].map(sl => projects.find(p => p.slug === sl)).map((p, i) => (
                             <Link key={p.slug} to={`/work#${p.slug}`} className="tile tile--post" data-reveal style={{ '--d': `${i * 80}ms` }}>
                                 <div className="tile__kicker">{p.org} · {p.year}</div>
                                 <div className="tile__title">{p.title}</div>

@@ -54,6 +54,33 @@ var yash = Engineer{
 
 <br />
 
+## ⭐ Built in the open
+
+Two public projects of mine that people have starred on GitHub.
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/yashpokar/ManasAI">ManasAI</a> &nbsp;<sub>2024</sub></h3>
+      <p><b>An open-source AI software engineer that plans, writes and runs code while you watch.</b></p>
+      <p>Devin was announced in March 2024. I started ManasAI within weeks, before Lovable, Bolt and the rest of the prompt-to-app wave had taken off. A planner breaks the task down, an agent carries out each step, and a replanner rewrites the plan when something fails. Everything runs inside a Docker sandbox, with a terminal, editor, browser and search as tools, and a web UI that shows the plan and the shell as it happens.</p>
+      <p><sub>TypeScript · GraphQL · Docker · OpenAI · MIT · experimental, and honest about it</sub></p>
+      <a href="https://github.com/yashpokar/ManasAI"><img src="https://github-readme-stats.vercel.app/api/pin/?username=yashpokar&repo=ManasAI&theme=dark&bg_color=0d121b&title_color=8fa4ff&text_color=94a3b8&icon_color=8fa4ff&border_color=233042" alt="ManasAI repository card" /></a>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/yashpokar/amazon-crawler">Amazon crawler</a> &nbsp;<sub>2018</sub></h3>
+      <p><b>A Scrapy crawler that covers Amazon end to end: categories, listings and product pages.</b></p>
+      <p>Amazon's product data is spread across three kinds of page, so the project has one spider for each. Run <code>scrapy crawl categories</code>, <code>listing</code> or <code>pdp</code>, and it collects ratings and reviews along with the basics. Small enough to read in an afternoon and adapt, which is probably why it is the most-starred repository I have.</p>
+      <p><sub>Python · Scrapy · MIT</sub></p>
+      <a href="https://github.com/yashpokar/amazon-crawler"><img src="https://github-readme-stats.vercel.app/api/pin/?username=yashpokar&repo=amazon-crawler&theme=dark&bg_color=0d121b&title_color=8fa4ff&text_color=94a3b8&icon_color=8fa4ff&border_color=233042" alt="amazon-crawler repository card" /></a>
+    </td>
+  </tr>
+</table>
+
+Longer write-ups are on [yashpokar.com/work](https://yashpokar.com/work).
+
+<br />
+
 ## 🛠 Stack
 
 <div align="center">
