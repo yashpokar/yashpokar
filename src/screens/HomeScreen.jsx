@@ -1,300 +1,139 @@
-import React, { useEffect, useState } from 'react'
-import SocialLink from './../components/home/SocialLink'
-import Recommendation from './../components/home/Recommendation'
-import recommendations from './../constants/home/recommendations'
-import achievements from './../constants/home/achievements'
-import skills from './../constants/home/skills'
+import React from 'react'
+import { Link } from 'react-router'
+import SystemDiagram from '../components/home/SystemDiagram'
+import Bento from '../components/home/Bento'
+import PostRow from '../components/blog/PostRow'
+import ParticleWordmark from '../components/fx/ParticleWordmark'
+import projects from '../data/projects'
+import { posts } from '../lib/posts'
+import useMeta from '../hooks/useMeta'
+import useReveal from '../hooks/useReveal'
 
-const CAREER_START = new Date('2017-12-01')
+const years = Math.floor((Date.now() - new Date('2017-12-01')) / (1000 * 60 * 60 * 24 * 365.25))
+const WORDS = ['AGENTS', 'EVALS', 'KAFKA', 'GEN UI', 'SHIP IT']
 
-const yearsOfExperience = () => {
-    const years = (new Date() - CAREER_START) / (1000 * 60 * 60 * 24 * 365.25)
-    return Math.floor(years) + '+'
-}
-
-const ROLES = [
-    'Senior Full Stack Developer',
-    'AI / ML Engineer',
-    'Systems Architect',
+const explore = [
+    { to: '/work',   title: 'Work',   body: 'Career timeline and six projects, each framed as problem, action and result.' },
+    { to: '/about',  title: 'About',  body: 'How I work, the short version of the career, and what colleagues say.' },
+    { to: '/skills', title: 'Skills', body: 'The stack on a globe, and the four agent protocol layers explained.' },
+    { to: '/blog',   title: 'Blog',   body: `${posts.length} posts on agents, evals, generative UI, infrastructure and data.` },
 ]
 
 export default function HomeScreen() {
-    const [roleIdx, setRoleIdx]     = useState(0)
-    const [displayed, setDisplayed] = useState('')
-    const [deleting, setDeleting]   = useState(false)
-
-    // Typewriter
-    useEffect(() => {
-        const role = ROLES[roleIdx]
-        let t
-        if (!deleting && displayed.length < role.length) {
-            t = setTimeout(() => setDisplayed(role.slice(0, displayed.length + 1)), 75)
-        } else if (!deleting && displayed.length === role.length) {
-            t = setTimeout(() => setDeleting(true), 2600)
-        } else if (deleting && displayed.length > 0) {
-            t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 38)
-        } else if (deleting && displayed.length === 0) {
-            setDeleting(false)
-            setRoleIdx((roleIdx + 1) % ROLES.length)
-        }
-        return () => clearTimeout(t)
-    }, [displayed, deleting, roleIdx])
-
-    // Scroll reveal
-    useEffect(() => {
-        const io = new IntersectionObserver(
-            entries => entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('is-visible')
-                    io.unobserve(e.target)
-                }
-            }),
-            { threshold: 0.08 }
-        )
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el))
-        return () => io.disconnect()
-    }, [])
+    useMeta(null, 'Yash Pokar — Senior Full Stack Developer at Twilio · Segment R&D, Bangalore. Agents, evals, generative UI and the infrastructure under them.')
+    useReveal()
 
     return (
-        <div className="site">
-
-            {/* Ambient background orbs */}
-            <div className="bg-orbs" aria-hidden="true">
-                <div className="bg-orb bg-orb--1" />
-                <div className="bg-orb bg-orb--2" />
-                <div className="bg-orb bg-orb--3" />
-            </div>
-
-            {/* ── Navigation ── */}
-            <nav className="nav">
-                <div className="nav__inner">
-                    <a href="/" className="nav__brand">YP</a>
-                    <div className="nav__links">
-                        <a href="#skills" className="nav__link">Skills</a>
-                        <a href="#experience" className="nav__link">Experience</a>
-                        <a href="#testimonials" className="nav__link">Testimonials</a>
+        <main>
+            <section className="hero hero--stack">
+                <div className="wrap">
+                    <div className="hero__status" data-rise="1">
+                        <span className="hero__status__dot" />
+                        Hi, I'm Yash. Press <kbd>⌘K</kbd> to wander.
                     </div>
-                    <a href="mailto:hello@yashpokar.com" className="nav__cta">
-                        Contact <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
-            </nav>
-
-            {/* ── Hero ── */}
-            <section id="about" className="hero">
-                <div className="hero__content">
-
-                    {/* Left — text */}
-                    <div className="hero__left">
-                        <div className="hero__eyebrow reveal">
-                            Full-Stack &amp; AI Engineering
-                        </div>
-
-                        <h1 className="hero__name reveal reveal--d1">
-                            Yash<br />Pokar
-                        </h1>
-
-                        <div className="hero__role-wrap reveal reveal--d2">
-                            <span className="hero__role">{displayed}</span>
-                            <span className="hero__cursor" aria-hidden="true" />
-                        </div>
-
-                        <div className="hero__divider reveal reveal--d2" />
-
-                        <p className="hero__bio reveal reveal--d3">
-                            Building scalable systems and AI-powered products with {yearsOfExperience()} years
-                            of experience. Currently at Twilio · Segment R&amp;D — working on the
-                            organisation's leading AI product initiatives.
-                        </p>
-
-                        <div className="hero__location reveal reveal--d3">
-                            <span className="hero__location__dot" />
-                            Twilio · Segment R&amp;D &nbsp;—&nbsp; Bangalore, India
-                        </div>
-
-                        <div className="hero__contacts reveal reveal--d4">
-                            <a href="mailto:hello@yashpokar.com" className="hero__contact">
-                                <i className="fa fa-envelope-o" aria-hidden="true" />
-                                hello@yashpokar.com
-                            </a>
-                            <span className="hero__contact">
-                                <i className="fa fa-phone" aria-hidden="true" />
-                                (+91) 940-956-7085
-                            </span>
-                        </div>
-
-                        <ul className="hero__social reveal reveal--d4">
-                            <SocialLink icon="github"         url="https://github.com/yashpokar" />
-                            <SocialLink icon="linkedin"       url="https://linkedin.com/in/yashpokar" />
-                            <SocialLink icon="medium"         url="https://yashpokar.medium.com" />
-                            <SocialLink icon="stack-overflow" url="https://stackoverflow.com/users/5939254/yash-pokar" />
-                            <SocialLink icon="twitter"        url="https://twitter.com/yashpokar" />
-                            <SocialLink icon="instagram"      url="https://instagram.com/yashpokar" />
-                        </ul>
-                    </div>
-
-                    {/* Right — photo */}
-                    <div className="hero__right reveal reveal--d2">
-                        <div className="hero__photo-frame">
-                            <div className="hero__photo-ring" aria-hidden="true" />
-                            <div className="hero__photo-ring hero__photo-ring--outer" aria-hidden="true" />
-                            <img src="/me.jpg" alt="Yash Pokar" className="hero__photo" />
-
-                            {/* Floating badge — company */}
-                            <div className="hero__badge hero__badge--company">
-                                <div className="hero__badge__dot" />
-                                <div>
-                                    <div className="hero__badge__title">Twilio · Segment</div>
-                                    <div className="hero__badge__sub">Bangalore, India</div>
-                                </div>
-                            </div>
-
-                            {/* Floating badge — experience */}
-                            <div className="hero__badge hero__badge--exp">
-                                <div className="hero__badge__num">{yearsOfExperience()}</div>
-                                <div className="hero__badge__sub">Years Exp.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className="hero__scroll" aria-hidden="true">
-                    <span>Scroll</span>
-                    <div className="hero__scroll__arrow" />
-                </div>
-            </section>
-
-            {/* ── Stats bar ── */}
-            <div className="stats">
-                <div className="stats__inner">
-                    <div className="stat reveal">
-                        <div className="stat__num">{yearsOfExperience()}</div>
-                        <div className="stat__label">Years Experience</div>
-                    </div>
-                    <div className="stat__divider" aria-hidden="true" />
-                    <div className="stat reveal reveal--d1">
-                        <div className="stat__num">4</div>
-                        <div className="stat__label">Companies</div>
-                    </div>
-                    <div className="stat__divider" aria-hidden="true" />
-                    <div className="stat reveal reveal--d2">
-                        <div className="stat__num">~60%</div>
-                        <div className="stat__label">Cost Reduction</div>
-                    </div>
-                    <div className="stat__divider" aria-hidden="true" />
-                    <div className="stat reveal reveal--d3">
-                        <div className="stat__num">15×</div>
-                        <div className="stat__label">Pipeline Speed-up</div>
-                    </div>
-                </div>
-            </div>
-
-            {/* ── Skills ── */}
-            <section id="skills" className="skills">
-                <div className="section-header reveal">
-                    <p className="section-label">
-                        <span className="section-num">01</span>Tech Stack
+                    <h1 className="hero__statement hero__statement--sm" data-rise="2">
+                        I build the systems behind products that have to work.
+                    </h1>
+                    <p className="hero__lede" data-rise="3">
+                        Senior full stack developer on the R&amp;D team at Twilio Segment, shipping AI features to customers.
+                        {' '}{years} years of crawlers, data pipelines and Kubernetes platforms, and now agents, evals,
+                        and the generative UI protocols that put them in front of real users.
                     </p>
-                    <h2 className="section-title">Skills</h2>
+                    <div className="hero__actions" data-rise="4">
+                        <Link to="/contact" className="btn btn--primary" data-magnetic><span className="btn__bg" />Start a conversation</Link>
+                        <Link to="/work" className="btn btn--ghost" data-magnetic>See my work</Link>
+                    </div>
                 </div>
-
-                <div className="skills__grid">
-                    {skills.map((group, i) => (
-                        <div
-                            key={group.category}
-                            className={`skill-card reveal reveal--d${i + 1}`}
-                        >
-                            <div className="skill-card__category">{group.category}</div>
-                            <div className="skill-card__tags">
-                                {group.items.map(item => (
-                                    <span key={item} className="skill-tag">{item}</span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
+                <div className="hero__word" data-rise="5">
+                    <ParticleWordmark words={WORDS} />
+                    <p className="hero__poke">↑ go on, poke it. Click to scatter.</p>
                 </div>
             </section>
 
-            {/* ── Experience ── */}
-            <section id="experience" className="journey">
-                <div className="journey__inner">
-                    <div className="section-header reveal">
-                        <p className="section-label">
-                            <span className="section-num">02</span>Career
-                        </p>
-                        <h2 className="section-title">Experience</h2>
-                        <p className="section-subtitle">
-                            {yearsOfExperience()} years of building, scaling, and shipping across the full stack.
-                        </p>
-                    </div>
+            <section className="section section--tight">
+                <div className="wrap">
+                    <Bento years={years} />
+                </div>
+            </section>
 
-                    <div className="journey__timeline">
-                        <div className="journey__spine" aria-hidden="true" />
-                        <div className="journey__items">
-                            {achievements.map((item, i) => (
-                                <div
-                                    key={i}
-                                    className={`journey__item journey__item--${i % 2 === 0 ? 'left' : 'right'} reveal reveal--${i % 2 === 0 ? 'left' : 'right'}`}
-                                >
-                                    <div className="journey__item__year">{item.year}</div>
-                                    <div className="journey__item__dot" aria-hidden="true">
-                                        <div className="journey__item__dot__ring" />
-                                    </div>
-                                    <div className="journey__item__card">
-                                        <div className="journey__item__header">
-                                            <div>
-                                                <div className="journey__item__company">{item.company}</div>
-                                                <div className="journey__item__role">{item.role}</div>
-                                            </div>
-                                            <span className="journey__item__metric">{item.metric}</span>
-                                        </div>
-                                        <p className="journey__item__desc">{item.description}</p>
-                                        <div className="journey__item__tags">
-                                            {item.tags.map(tag => (
-                                                <span key={tag} className="journey__item__tag">{tag}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+            <section className="section">
+                <div className="wrap stackgrid stackgrid--flush">
+                    <div data-reveal>
+                        <h2 className="section__title">The stack, in motion</h2>
+                        <p className="section__note">Events and documents go in. An agent with tools and an eval gate does the thinking. AG-UI streams it, A2UI draws it, and a person stays in the loop.</p>
+                        <Link to="/skills" className="textlink">Explore the stack →</Link>
+                    </div>
+                    <div data-reveal style={{ '--d': '100ms' }}><SystemDiagram /></div>
+                </div>
+            </section>
+
+            <section className="section">
+                <div className="wrap">
+                    <div className="section__head" data-reveal>
+                        <h2 className="section__title">Explore</h2>
+                        <p className="section__note">Four places to go next.</p>
+                    </div>
+                    <div className="explore">
+                        {explore.map((e, i) => (
+                            <Link key={e.to} to={e.to} className="explore__card" data-reveal style={{ '--d': `${i * 70}ms` }}>
+                                <span className="explore__arrow" aria-hidden="true">↗</span>
+                                <h3>{e.title}</h3>
+                                <p>{e.body}</p>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* ── Testimonials ── */}
-            <section id="testimonials" className="testimonials">
-                <div className="section-header reveal">
-                    <p className="section-label">
-                        <span className="section-num">03</span>Social Proof
-                    </p>
-                    <h2 className="section-title">Commendations</h2>
-                    <p className="section-subtitle">
-                        What colleagues, founders, and managers say about working with me.
-                    </p>
-                </div>
-
-                <div className="testimonials__grid">
-                    {recommendations.map((r, i) => (
-                        <Recommendation
-                            key={r.author.name}
-                            author={r.author.name}
-                            headline={r.author.headline}
-                            address={r.author.address}
-                            content={r.content}
-                            className={`reveal reveal--d${(i % 4) + 1}`}
-                        />
-                    ))}
+            <section className="section">
+                <div className="wrap">
+                    <div className="section__head section__head--row" data-reveal>
+                        <div>
+                            <h2 className="section__title">Selected work</h2>
+                            <p className="section__note">Three of six. The rest are on the Work page.</p>
+                        </div>
+                        <Link to="/work" className="btn btn--ghost">All projects</Link>
+                    </div>
+                    <div className="post-grid">
+                        {[projects[0], projects[1], projects[5]].map((p, i) => (
+                            <Link key={p.slug} to={`/work#${p.slug}`} className="tile tile--post" data-reveal style={{ '--d': `${i * 80}ms` }}>
+                                <div className="tile__kicker">{p.org} · {p.year}</div>
+                                <div className="tile__title">{p.title}</div>
+                                <p className="tile__body">{p.metric}</p>
+                                <div className="tile__tags">{p.tags.slice(0, 3).map(t => <span key={t}>{t}</span>)}</div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            {/* ── Footer ── */}
-            <footer className="site-footer">
-                <p>
-                    &copy; {new Date().getFullYear()} &nbsp; Yash Pokar &nbsp;—&nbsp; All Rights Reserved
-                </p>
-            </footer>
-        </div>
+            <section className="section">
+                <div className="wrap">
+                    <div className="section__head section__head--row" data-reveal>
+                        <div>
+                            <h2 className="section__title">Latest from the blog</h2>
+                            <p className="section__note">Notes on the systems I build.</p>
+                        </div>
+                        <Link to="/blog" className="btn btn--ghost">All {posts.length} posts</Link>
+                    </div>
+                    <div className="post-grid">
+                        {posts.slice(0, 3).map((p, i) => (
+                            <div key={p.slug} data-reveal style={{ '--d': `${i * 80}ms` }}><PostRow post={p} card /></div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="section">
+                <div className="wrap">
+                    <div className="cta" data-reveal>
+                        <div className="cta__glow" aria-hidden="true" />
+                        <h2 className="cta__title">Have a system that has to work?</h2>
+                        <p className="cta__body">I'm happiest on problems with real constraints: throughput, cost, correctness, or an agent that needs to behave. Say hello.</p>
+                        <Link to="/contact" className="btn btn--primary" data-magnetic><span className="btn__bg" />Get in touch</Link>
+                    </div>
+                </div>
+            </section>
+        </main>
     )
 }

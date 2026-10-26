@@ -1,18 +1,18 @@
 export default [
     {
+        category: "Generative AI",
+        items: ["LangGraph agents", "MCP", "A2A", "AG-UI", "A2UI generative UI", "RAG pipelines", "Evals & LLM-as-judge", "LoRA fine-tuning", "Guardrails", "OpenAI & Claude APIs"]
+    },
+    {
         category: "Backend",
-        items: ["Golang", "Python", "Java", "Node.js", "FastAPI", "Flask", "Spring Boot"]
+        items: ["Golang", "Python", "Java", "Node.js", "FastAPI", "Flask", "Spring Boot", "GraphQL"]
     },
     {
         category: "Frontend",
-        items: ["React", "TypeScript", "GraphQL", "Next.js"]
+        items: ["React", "TypeScript", "Next.js", "Streaming UIs", "CopilotKit"]
     },
     {
-        category: "AI / ML",
-        items: ["LangChain", "LangGraph", "OpenAI GPT", "Llama 3", "SageMaker", "RAG Pipeline", "Mistral 7B"]
-    },
-    {
-        category: "Infra & Cloud",
-        items: ["AWS", "Kafka", "Docker", "Kubernetes", "Redis", "MySQL", "Solr"]
+        category: "Infra & Data",
+        items: ["AWS", "Kubernetes", "Docker", "Kafka", "Redis", "MySQL", "Solr", "SageMaker"]
     }
 ]

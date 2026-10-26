@@ -1,34 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const initials = name =>
-    name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
+/** Wrap each highlight phrase in <mark>; phrases must match the text exactly. */
+const withMarks = (text, phrases = []) => {
+    if (!phrases.length) return text
+    const esc = phrases.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    const re = new RegExp(`(${esc.join('|')})`, 'g')
+    return text.split(re).map((part, i) => phrases.includes(part) ? <mark key={i} className="hl">{part}</mark> : part)
+}
 
-const Recommendation = ({ content, author, headline, address, className }) => (
-    <div className={`recommendations__item${className ? ' ' + className : ''}`}>
-        <div className="recommendations__item__content">
-            {content}
-        </div>
-        <div className="recommendations__item__author">
-            <div className="recommendations__item__avatar">
-                {initials(author)}
-            </div>
-            <div>
-                <div className="recommendations__item__name">{author}</div>
-                <div className="recommendations__item__author__headline">
-                    {headline}<br />{address}
-                </div>
-            </div>
-        </div>
-    </div>
+const Recommendation = ({ content, author, headline, highlights, lead = false }) => (
+    lead ? (
+        <blockquote>
+            <p className="quote-lead">{withMarks(content, highlights)}</p>
+            <div className="quote__by"><strong>{author}</strong><span>{headline}</span></div>
+        </blockquote>
+    ) : (
+        <blockquote className="quote">
+            <p>{withMarks(content, highlights)}</p>
+            <div className="quote__by"><strong>{author}</strong><span>{headline}</span></div>
+        </blockquote>
+    )
 )
 
 Recommendation.propTypes = {
-    content:   PropTypes.string.isRequired,
-    author:    PropTypes.string.isRequired,
-    headline:  PropTypes.string.isRequired,
-    address:   PropTypes.string.isRequired,
-    className: PropTypes.string,
+    content:    PropTypes.string.isRequired,
+    author:     PropTypes.string.isRequired,
+    headline:   PropTypes.string.isRequired,
+    highlights: PropTypes.arrayOf(PropTypes.string),
+    lead:       PropTypes.bool,
 }
 
 export default Recommendation

@@ -18,6 +18,7 @@ export default [
     {
         year: "2020",
         company: "Zivame",
+        about: "India's largest lingerie platform",
         role: "Senior Software Developer",
         metric: "~60% infra cost reduction",
         description: "Reduced infrastructure costs by ~60% by dockerising services and deploying to Spot.io Ocean Serverless Kubernetes. Led the multi-warehouse system end-to-end and directed 3 engineers. Optimised a nightly SKU sync from 3.5 hours down to 20 minutes using concurrent execution.",
@@ -28,7 +29,7 @@ export default [
         company: "Twilio · Segment R&D",
         role: "Senior Software Developer",
         metric: "Org's leading AI initiative",
-        description: "Delivered Segment's first customer-facing AI product — Function's Copilot — at a company hackathon, letting customers generate Segment functions from plain-English prompts. Built a RAG pipeline, LangGraph-powered AI agent, and an internal knowledge base using AWS SageMaker with Mistral 7B (later Llama 3 8B-Instruct).",
-        tags: ["Golang", "TypeScript", "React", "LangChain", "LangGraph", "OpenAI", "Llama 3", "SageMaker", "Kafka", "FastAPI"]
+        description: "Delivered Segment's first customer-facing AI product — Functions Copilot — from a company hackathon, letting customers generate Segment functions from plain-English prompts. Built the RAG pipeline, the LangGraph agent, the streaming editor integration, and the eval harness that let us change prompts and models safely. Also shipped an internal knowledge base on self-hosted open models.",
+        tags: ["Golang", "TypeScript", "React", "LangGraph", "RAG", "Evals", "OpenAI", "SageMaker", "Kafka", "FastAPI"]
     },
 ]
