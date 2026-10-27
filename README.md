@@ -107,13 +107,12 @@ Longer write-ups are on [yashpokar.com/work](https://yashpokar.com/work).
 
 Long on specifics, short on hype. Full archive at [yashpokar.com/blog](https://yashpokar.com/blog) · [RSS](https://yashpokar.com/rss.xml)
 
-<!-- BLOG-POST-LIST:START -->
-- [What the AI engineering market actually wants in 2026](https://yashpokar.com/blog/what-the-ai-engineering-market-actually-wants-in-2026) <sub>· Oct 20, 2026</sub>
-- [AG-UI: the missing protocol between your agent and your frontend](https://yashpokar.com/blog/ag-ui-the-protocol-between-agents-and-your-frontend) <sub>· Oct 5, 2026</sub>
-- [A2UI: when the agent builds the interface](https://yashpokar.com/blog/a2ui-when-the-agent-builds-the-interface) <sub>· Sep 12, 2026</sub>
-- [Evals are the product: how I ship LLM features without guessing](https://yashpokar.com/blog/evals-are-the-product) <sub>· Aug 16, 2026</sub>
-- [The favour that became a revenue line](https://yashpokar.com/blog/the-favour-that-became-a-revenue-line) <sub>· Jul 27, 2026</sub>
-- [Fine-tune, retrieve, or just prompt? A decision I keep re-making](https://yashpokar.com/blog/fine-tune-retrieve-or-prompt) <sub>· Jun 7, 2026</sub>
+<!-- BLOG-POST-LIST:START -->- [What the AI engineering market actually wants in 2026](https://www.yashpokar.com/blog/what-the-ai-engineering-market-actually-wants-in-2026) <sub>· Oct 20, 2026</sub>
+- [AG-UI: the missing protocol between your agent and your frontend](https://www.yashpokar.com/blog/ag-ui-the-protocol-between-agents-and-your-frontend) <sub>· Oct 5, 2026</sub>
+- [A2UI: when the agent builds the interface](https://www.yashpokar.com/blog/a2ui-when-the-agent-builds-the-interface) <sub>· Sep 12, 2026</sub>
+- [Evals are the product: how I ship LLM features without guessing](https://www.yashpokar.com/blog/evals-are-the-product) <sub>· Aug 16, 2026</sub>
+- [The favour that became a revenue line](https://www.yashpokar.com/blog/the-favour-that-became-a-revenue-line) <sub>· Jul 27, 2026</sub>
+- [Fine-tune, retrieve, or just prompt? A decision I keep re-making](https://www.yashpokar.com/blog/fine-tune-retrieve-or-prompt) <sub>· Jun 7, 2026</sub>
 <!-- BLOG-POST-LIST:END -->
 
 <sub>This list refreshes daily via [GitHub Actions](.github/workflows/blog-posts.yml).</sub>
